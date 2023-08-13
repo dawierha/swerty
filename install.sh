@@ -14,7 +14,7 @@ swerty_variant="\ \ \ \ \ \ \ \ <variant>\\
         \</variant>"
 swerty_variant_lst="\ \ swerty          se: Swerty"
 
-#Check root priviligies
+#Check root privileges
 if [ "$USER" != "root" ]
 then
     echo "This script needs root priviligies"
