@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # Files to modify
-symbols="test/se" #"/usr/share/X11/xkb/symbols/se"
-evdev_xml="test/evdev.xml" #"/usr/share/X11/xkb/rules/evdev.xml"
-evdev_lst="test/evdev.lst" #"/usr/share/X11/xkb/rules/evdev.lst"
+symbols="/usr/share/X11/xkb/symbols/se"
+evdev_xml="/usr/share/X11/xkb/rules/evdev.xml"
+evdev_lst="/usr/share/X11/xkb/rules/evdev.lst"
 
 # Text to add
 swerty_variant="\ \ \ \ \ \ \ \ <variant>\\
@@ -30,7 +30,6 @@ cat ./se.txt >> $symbols
 line_number=$(grep -n "<name>se</name>" "${evdev_xml}" | cut -d':' -f1)
 insert_line=$line_number
 tail -n +$line_number "${evdev_xml}" | while IFS= read -r line; do
-    echo "Processing line: $line"
     ((insert_line++))
     if [[ $line == *"<variantList>"* ]]; then
         sed -i "${insert_line}i ${swerty_variant}" "${evdev_xml}"
