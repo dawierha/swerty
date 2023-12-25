@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Files to modify
 symbols="/usr/share/X11/xkb/symbols/se"
@@ -42,3 +42,5 @@ done
 line_number_lst=$(grep -n "! variant" "${evdev_lst}" | cut -d':' -f1)
 ((line_number_lst++))
 sed -i "${line_number_lst}i ${swerty_variant_lst}" "${evdev_lst}"
+
+echo "Swerty successfully installed. You can now add the layout and then log out and in again."
